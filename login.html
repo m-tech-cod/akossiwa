@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion Admin | Association Élite de Akossiwa</title>
+    
+    <!-- SEO - Meta tags -->
+    <meta name="description" content="Espace administrateur sécurisé de l'Association Élite de Akossiwa. Connectez-vous pour gérer les offres de bénévolat, les candidatures et les actions de l'association.">
+    <meta name="keywords" content="connexion admin, espace administrateur, gestion association, AEA, akossiwa, panel admin">
+    <meta name="author" content="Association Élite de Akossiwa">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="language" content="fr">
+    
+    <!-- Open Graph / Facebook -->
+    <!-- <meta property="og:title" content="Connexion Admin | Association Élite de Akossiwa">
+    <meta property="og:description" content="Espace administrateur sécurisé de l'Association Élite de Akossiwa."> -->
+    <meta property="og:image" content="images/logo.jpeg">
+    <!-- <meta property="og:image" content="https://votre-site.com/images/logo.jpeg"> -->
+    <!-- <meta property="og:url" content="https://votre-site.com/login.html"> -->
+    <!-- <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Association Élite de Akossiwa"> -->
+    
+    <!-- Canonical (à activer quand le domaine sera disponible) -->
+    <!-- <link rel="canonical" href="https://www.akossiwa.com/login.html"> -->
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --orange: #F28C28;
+            --marron: #6A4526;
+            --marron-clair: #8B5E3C;
+            --noir: #000000;
+            --gris-texte: #333333;
+            --blanc: #FFFFFF;
+            --gris-clair: #f5f5f5;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Inter', system-ui, sans-serif;
+            background: linear-gradient(135deg, var(--marron) 0%, var(--noir) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .login-card {
+            background: var(--blanc);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            animation: fadeInUp 0.6s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo-wrapper {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--orange), var(--marron));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            padding: 5px;
+        }
+
+        .logo-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            background: var(--blanc);
+        }
+
+        .logo-section h2 {
+            color: var(--marron);
+            font-size: 1.3rem;
+        }
+
+        .logo-section p {
+            color: var(--orange);
+            font-size: 0.85rem;
+            margin-top: 5px;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-header h1 {
+            color: var(--marron);
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+
+        .login-header p {
+            color: var(--gris-texte);
+            font-size: 0.9rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--marron);
+        }
+
+        .form-group label i {
+            color: var(--orange);
+            margin-right: 8px;
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 14px 15px;
+            border: 2px solid var(--gris-clair);
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--orange);
+            box-shadow: 0 0 0 3px rgba(242,140,40,0.1);
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: var(--gris-texte);
+            transition: color 0.3s ease;
+        }
+
+        .toggle-password:hover {
+            color: var(--orange);
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            font-size: 0.85rem;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            color: var(--gris-texte);
+        }
+
+        .checkbox-label input {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+            accent-color: var(--orange);
+        }
+
+        .forgot-link {
+            color: var(--orange);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .forgot-link:hover {
+            color: var(--marron);
+            text-decoration: underline;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--orange), var(--marron));
+            color: var(--blanc);
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(242,140,40,0.4);
+        }
+
+        .error-message {
+            background: #fee2e2;
+            color: #dc2626;
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 0.85rem;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+            animation: shake 0.5s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid var(--gris-clair);
+        }
+
+        .back-link a {
+            color: var(--orange);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .back-link a:hover {
+            color: var(--marron);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 480px) {
+            .login-card {
+                padding: 25px;
+            }
+            
+            .login-header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .form-options {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="logo-section">
+                <div class="logo-wrapper">
+                    <img src="images/logo.jpeg" alt="Logo Association Élite de Akossiwa">
+                </div>
+                <h2>Association Élite de Akossiwa</h2>
+                <p>Espace Administrateur</p>
+            </div>
+            
+            <div class="login-header">
+                <h1>Connexion</h1>
+                <p>Accédez à votre espace sécurisé</p>
+            </div>
+            
+            <div class="error-message" id="errorMessage">
+                <i class="fas fa-exclamation-circle"></i> Identifiants incorrects
+            </div>
+            
+            <form id="loginForm" action="#" method="POST">
+                <div class="form-group">
+                    <label><i class="fas fa-envelope"></i> Email</label>
+                    <div class="input-group">
+                        <input type="email" id="email" name="email" placeholder="exemple@gmail.com" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label><i class="fas fa-lock"></i> Mot de passe</label>
+                    <div class="input-group">
+                        <input type="password" id="password" name="password" placeholder="••••••••" required>
+                        <span class="toggle-password" id="togglePassword">
+                            <i class="fas fa-eye-slash"></i>
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="form-options">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="rememberMe" name="remember">
+                        <span>Se souvenir de moi</span>
+                    </label>
+                </div>
+                
+                <button type="submit" class="login-btn">
+                    <i class="fas fa-right-to-bracket"></i> Se connecter
+                </button>
+            </form>
+            
+            <div class="back-link">
+                <a href="index.html">
+                    <i class="fas fa-arrow-left"></i> Retour au site
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle password visibility
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+        
+        if (togglePassword && passwordInput) {
+            togglePassword.addEventListener('click', function() {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                this.querySelector('i').classList.toggle('fa-eye');
+                this.querySelector('i').classList.toggle('fa-eye-slash');
+            });
+        }
+        
+        // Login form - à connecter avec le backend
+        const loginForm = document.getElementById('loginForm');
+        const errorMessage = document.getElementById('errorMessage');
+        
+        if (loginForm) {
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                const rememberMe = document.getElementById('rememberMe').checked;
+                
+                // Simulation temporaire (à remplacer par backend)
+                console.log('Tentative de connexion pour:', email);
+                errorMessage.classList.add('show');
+                setTimeout(() => {
+                    errorMessage.classList.remove('show');
+                }, 3000);
+            });
+        }
+    </script>
+</body>
+</html>
